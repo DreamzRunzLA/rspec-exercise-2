@@ -16,15 +16,30 @@ end
 
 
 def substrings(string)
-    i = string.length - 1
-    ans = []
+    letters = string.split('')
+    answer = []
 
-    while i > 0 do
-        
+    i = 0
+    while i < letters.length do
+        k = i
+        while k < letters.length do 
+            answer << letters[i..k].join('')
+            k += 1
+        end
+        i += 1
     end
+    return answer
 end
 
 
 def palindrome_substrings(string)
+    substringArr = substrings(string)
+    answer = []
 
+    substringArr.each do |ele|
+        if palindrome?(ele) && ele.length > 1
+            answer << ele
+        end
+    end
+    return answer 
 end
